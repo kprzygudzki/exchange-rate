@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import pl.com.bottega.exchangerate.api.ExchangeManager;
 import pl.com.bottega.exchangerate.api.implementation.StandardExchangeManager;
 import pl.com.bottega.exchangerate.domain.ExchangeRepository;
-import pl.com.bottega.exchangerate.domain.JPAExchangeRepository;
 
 @org.springframework.context.annotation.Configuration
 public class Configuration {
