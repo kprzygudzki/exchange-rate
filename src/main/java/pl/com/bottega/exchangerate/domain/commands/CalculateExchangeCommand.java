@@ -65,14 +65,14 @@ public class CalculateExchangeCommand implements Validatable {
 		if (isEmpty(this.from))
 			errors.add("from", IS_REQUIRED);
 		else if (this.from.equals(this.to))
-			errors.add("from", String.format("must be different than %s", "to"));
+			errors.add("from", "must be different than to");
 	}
 
 	private void validateTo(ValidationErrors errors) {
 		if (isEmpty(this.to))
 			errors.add("to", IS_REQUIRED);
 		else if (this.to.equals(this.from))
-			errors.add("to", String.format("must be different than %s", "from"));
+			errors.add("to", "must be different than from");
 	}
 
 	private void validateAmount(ValidationErrors errors) {
