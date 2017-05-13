@@ -32,7 +32,7 @@ public class StandardExchangeManager implements ExchangeManager {
 	public ExchangeDto calculateExchange(CalculateExchangeCommand command) {
 		ExchangeRate from = getExchangeRate(command.getFrom(), command.getDate());
 		ExchangeRate to = getExchangeRate(command.getTo(), command.getDate());
-		Exchange exchange = Exchange.of(from, to, command.getAmount(), command.getDate());
+		Exchange exchange = Exchange.of(from, to, command.getAmount());
 		return createExchangeDto(exchange);
 	}
 

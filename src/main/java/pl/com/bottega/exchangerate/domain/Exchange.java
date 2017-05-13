@@ -22,11 +22,16 @@ public class Exchange {
 		this.date = date;
 	}
 
-	public static Exchange of(ExchangeRate from, ExchangeRate to, BigDecimal amount, LocalDate date) {
+	public static Exchange of(ExchangeRate from, ExchangeRate to, BigDecimal amount) {
 		String fromCurrency = from.getCurrency();
 		String toCurrency = to.getCurrency();
+		LocalDate localDate = assignDate(from, to);
 		BigDecimal calculatedAmount = calculateAmount(from, to, amount);
-		return new Exchange(fromCurrency, toCurrency, amount, calculatedAmount, date);
+		return new Exchange(fromCurrency, toCurrency, amount, calculatedAmount, localDate);
+	}
+
+	private static LocalDate assignDate(ExchangeRate from, ExchangeRate to) {
+		return (from.getDate() != null) ? from.getDate() : to.getDate();
 	}
 
 	private static BigDecimal calculateAmount(ExchangeRate from, ExchangeRate to, BigDecimal amount) {
