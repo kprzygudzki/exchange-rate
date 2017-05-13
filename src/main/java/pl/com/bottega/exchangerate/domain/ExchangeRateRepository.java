@@ -2,7 +2,7 @@ package pl.com.bottega.exchangerate.domain;
 
 import java.time.LocalDate;
 
-public interface ExchangeRepository {
+public interface ExchangeRateRepository {
 
 	void put(ExchangeRate rate);
 

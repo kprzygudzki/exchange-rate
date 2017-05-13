@@ -1,7 +1,7 @@
 package pl.com.bottega.exchangerate.infrastructure;
 
 import pl.com.bottega.exchangerate.domain.ExchangeRate;
-import pl.com.bottega.exchangerate.domain.ExchangeRepository;
+import pl.com.bottega.exchangerate.domain.ExchangeRateRepository;
 import pl.com.bottega.exchangerate.domain.NoRateException;
 
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
 
-public class JPAExchangeRepository implements ExchangeRepository {
+public class JPAExchangeRepository implements ExchangeRateRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;

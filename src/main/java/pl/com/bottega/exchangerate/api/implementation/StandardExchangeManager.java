@@ -5,7 +5,7 @@ import pl.com.bottega.exchangerate.api.ExchangeDtoBuilder;
 import pl.com.bottega.exchangerate.api.ExchangeManager;
 import pl.com.bottega.exchangerate.domain.Exchange;
 import pl.com.bottega.exchangerate.domain.ExchangeRate;
-import pl.com.bottega.exchangerate.domain.ExchangeRepository;
+import pl.com.bottega.exchangerate.domain.ExchangeRateRepository;
 import pl.com.bottega.exchangerate.domain.commands.CreateExchangeRateCommand;
 import pl.com.bottega.exchangerate.domain.commands.CalculateExchangeCommand;
 
@@ -15,9 +15,9 @@ import java.time.LocalDate;
 @Transactional
 public class StandardExchangeManager implements ExchangeManager {
 
-	private ExchangeRepository repository;
+	private ExchangeRateRepository repository;
 
-	public StandardExchangeManager(ExchangeRepository repository) {
+	public StandardExchangeManager(ExchangeRateRepository repository) {
 		this.repository = repository;
 	}
 
