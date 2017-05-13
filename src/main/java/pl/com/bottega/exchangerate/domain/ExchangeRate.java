@@ -40,6 +40,14 @@ public class ExchangeRate {
 		return new ExchangeRate(date, currencyFrom, rate);
 	}
 
+	public static String getDefaultCurrency() {
+		return DEFAULT_CURRENCY;
+	}
+
+	public static ExchangeRate getDefault() {
+		return DEFAULT;
+	}
+
 	String getCurrency() {
 		return currency;
 	}
@@ -50,14 +58,6 @@ public class ExchangeRate {
 
 	BigDecimal getRate() {
 		return rate;
-	}
-
-	public static String getDefaultCurrency() {
-		return DEFAULT_CURRENCY;
-	}
-
-	public static ExchangeRate getDefault() {
-		return DEFAULT;
 	}
 
 }
