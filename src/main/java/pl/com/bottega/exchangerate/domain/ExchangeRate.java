@@ -2,6 +2,7 @@ package pl.com.bottega.exchangerate.domain;
 
 import pl.com.bottega.exchangerate.domain.commands.CreateExchangeRateCommand;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,18 +14,17 @@ import java.util.UUID;
 public class ExchangeRate {
 
 	private static final String DEFAULT_CURRENCY = "PLN";
-	private static final ExchangeRate DEFAULT =
-			new ExchangeRate(null, DEFAULT_CURRENCY, BigDecimal.ONE);
+	private static final ExchangeRate DEFAULT =	new ExchangeRate(null, DEFAULT_CURRENCY, BigDecimal.ONE);
 
-	@Id
-	@GeneratedValue
-	private UUID id;
+	@EmbeddedId
+	private CurrencyRateId id;
 
 	private LocalDate date;
 	private String currency;
 	private BigDecimal rate;
 
 	ExchangeRate(LocalDate date, String currency, BigDecimal rate) {
+		this.id = CurrencyRateId.generate();
 		this.date = date;
 		this.currency = currency;
 		this.rate = rate;
