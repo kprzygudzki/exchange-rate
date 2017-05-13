@@ -40,12 +40,6 @@ public class ExchangeRate {
 		return new ExchangeRate(date, currencyFrom, rate);
 	}
 
-	public void change(CreateExchangeRateCommand command) {
-		date = command.getDate();
-		currency = command.getCurrency();
-		rate = command.getRate();
-	}
-
 	String getCurrency() {
 		return currency;
 	}
@@ -65,4 +59,5 @@ public class ExchangeRate {
 	public static ExchangeRate getDefault() {
 		return DEFAULT;
 	}
+
 }
