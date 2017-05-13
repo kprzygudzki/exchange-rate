@@ -9,4 +9,5 @@ public class ExchangeRateApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExchangeRateApplication.class, args);
 	}
+
 }

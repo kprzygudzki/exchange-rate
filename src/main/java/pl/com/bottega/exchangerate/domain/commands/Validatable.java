@@ -7,30 +7,33 @@ import java.util.Set;
 
 public interface Validatable {
 
-    void validate(ValidationErrors errors);
+	String IS_REQUIRED = "is required";
+	String GREATER_THAN_ZERO_REQUIRED = "must be > than 0.0";
 
-    class ValidationErrors {
+	void validate(ValidationErrors errors);
 
-        private Map<String, Set<String>> errors = new HashMap<>();
+	class ValidationErrors {
 
-        public void add(String fieldName, String errorMessage) {
-            Set<String> fieldErrors = errors.getOrDefault(fieldName, new HashSet<>());
-            fieldErrors.add(errorMessage);
-            errors.putIfAbsent(fieldName, fieldErrors);
-        }
+		private Map<String, Set<String>> errors = new HashMap<>();
 
-        public boolean isValid() {
-            return errors.isEmpty();
-        }
+		public void add(String fieldName, String errorMessage) {
+			Set<String> fieldErrors = errors.getOrDefault(fieldName, new HashSet<>());
+			fieldErrors.add(errorMessage);
+			errors.putIfAbsent(fieldName, fieldErrors);
+		}
 
-        public Map<String, Set<String>> getErrors() {
-            return new HashMap<>(errors);
-        }
+		public boolean isValid() {
+			return errors.isEmpty();
+		}
 
-    }
+		public Map<String, Set<String>> getErrors() {
+			return new HashMap<>(errors);
+		}
 
-    default boolean isEmpty(String s) {
-        return s == null || s.trim().length() == 0;
-    }
+	}
+
+	default boolean isEmpty(String s) {
+		return s == null || s.trim().length() == 0;
+	}
 
 }
