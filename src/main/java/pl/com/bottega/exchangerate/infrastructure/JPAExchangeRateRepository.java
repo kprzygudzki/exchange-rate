@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.List;
 
-public class JPAExchangeRepository implements ExchangeRateRepository {
+public class JPAExchangeRateRepository implements ExchangeRateRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;

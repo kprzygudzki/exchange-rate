@@ -15,7 +15,7 @@ public class Configuration {
 
 	@Bean
 	ExchangeRateRepository exchangeRepository() {
-		return new JPAExchangeRepository();
+		return new JPAExchangeRateRepository();
 	}
 
 }
