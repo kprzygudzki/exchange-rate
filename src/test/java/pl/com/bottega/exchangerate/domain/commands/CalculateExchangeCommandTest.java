@@ -28,6 +28,7 @@ public class CalculateExchangeCommandTest {
 	@Test
 	public void shouldValidateCorrectCommand() {
 		command.validate(errors);
+		assertThat(errors.isValid()).isTrue();
 		assertThat(errors.getErrors()).isEmpty();
 	}
 
@@ -35,6 +36,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateNullDate() {
 		command.setDate(null);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("date");
 		assertThat(errors.getErrors().get("date")).contains(IS_REQUIRED);
 	}
@@ -43,6 +45,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateNullFrom() {
 		command.setFrom(null);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("from");
 		assertThat(errors.getErrors().get("from")).contains(IS_REQUIRED);
 	}
@@ -51,6 +54,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateEmptyFrom() {
 		command.setFrom("   ");
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("from");
 		assertThat(errors.getErrors().get("from")).contains(IS_REQUIRED);
 	}
@@ -59,6 +63,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateNullTo() {
 		command.setTo(null);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("to");
 		assertThat(errors.getErrors().get("to")).contains(IS_REQUIRED);
 	}
@@ -67,6 +72,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateEmptyTo() {
 		command.setTo("   ");
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("to");
 		assertThat(errors.getErrors().get("to")).contains(IS_REQUIRED);
 	}
@@ -77,6 +83,7 @@ public class CalculateExchangeCommandTest {
 		command.setFrom(currency);
 		command.setTo(currency);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("from").contains("to");
 		assertThat(errors.getErrors().get("from")).contains("must be different than to");
 		assertThat(errors.getErrors().get("to")).contains("must be different than from");
@@ -86,6 +93,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateNullAmount() {
 		command.setAmount(null);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("amount");
 		assertThat(errors.getErrors().get("amount")).contains(IS_REQUIRED);
 	}
@@ -94,6 +102,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateZeroAmount() {
 		command.setAmount(BigDecimal.ZERO);
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("amount");
 		assertThat(errors.getErrors().get("amount")).contains(GREATER_THAN_ZERO_REQUIRED);
 	}
@@ -102,6 +111,7 @@ public class CalculateExchangeCommandTest {
 	public void shouldInvalidateNegativeAmount() {
 		command.setAmount(BigDecimal.TEN.negate());
 		command.validate(errors);
+		assertThat(errors.isValid()).isFalse();
 		assertThat(errors.getErrors().keySet()).contains("amount");
 		assertThat(errors.getErrors().get("amount")).contains(GREATER_THAN_ZERO_REQUIRED);
 	}
