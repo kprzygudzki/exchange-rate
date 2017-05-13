@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.com.bottega.exchangerate.api.ExchangeDto;
 import pl.com.bottega.exchangerate.api.ExchangeManager;
 import pl.com.bottega.exchangerate.domain.commands.CreateExchangeRateCommand;
-import pl.com.bottega.exchangerate.domain.commands.CalculateExchangeRequest;
+import pl.com.bottega.exchangerate.domain.commands.CalculateExchangeCommand;
 
 @RestController
 public class ExchangeController {
@@ -24,7 +24,7 @@ public class ExchangeController {
 	}
 
 	@GetMapping("/calculation")
-	ExchangeDto calculateExchange(CalculateExchangeRequest query) {
+	ExchangeDto calculateExchange(CalculateExchangeCommand query) {
 		return exchangeManager.calculateExchange(query);
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class CalculateExchangeRequest implements Validatable {
+public class CalculateExchangeCommand implements Validatable {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
@@ -13,7 +13,7 @@ public class CalculateExchangeRequest implements Validatable {
 	private String to;
 	private BigDecimal amount;
 
-	public CalculateExchangeRequest() {
+	public CalculateExchangeCommand() {
 	}
 
 	public LocalDate getDate() {

@@ -7,7 +7,7 @@ import pl.com.bottega.exchangerate.domain.Exchange;
 import pl.com.bottega.exchangerate.domain.ExchangeRate;
 import pl.com.bottega.exchangerate.domain.ExchangeRepository;
 import pl.com.bottega.exchangerate.domain.commands.CreateExchangeRateCommand;
-import pl.com.bottega.exchangerate.domain.commands.CalculateExchangeRequest;
+import pl.com.bottega.exchangerate.domain.commands.CalculateExchangeCommand;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -29,7 +29,7 @@ public class StandardExchangeManager implements ExchangeManager {
 	}
 
 	@Override
-	public ExchangeDto calculateExchange(CalculateExchangeRequest command) {
+	public ExchangeDto calculateExchange(CalculateExchangeCommand command) {
 		ExchangeRate from = getExchangeRate(command.getFrom(), command.getDate());
 		ExchangeRate to = getExchangeRate(command.getTo(), command.getDate());
 		Exchange exchange = Exchange.of(from, to, command.getAmount(), command.getDate());
