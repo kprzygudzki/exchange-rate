@@ -79,7 +79,7 @@ public class CalculateExchangeCommand implements Validatable {
 		if (amount == null)
 			errors.add("amount", IS_REQUIRED);
 		else if (!(amount.compareTo(BigDecimal.ZERO) > 0))
-			errors.add("rate", GREATER_THAN_ZERO_REQUIRED);
+			errors.add("amount", GREATER_THAN_ZERO_REQUIRED);
 	}
 
 }
